@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "../components/ArticleCard";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Home = () => {
   const [articles, setArticles] = useState(null);
@@ -12,18 +13,22 @@ const Home = () => {
   }, []);
 
   if (articles === null) {
-    return <h2>Loading</h2>;
+    return <h2>Fetching some articles...</h2>;
   }
 
   return (
-    <>
-      <div>
-        <h2>Articles available:</h2>
+    <Container>
+      <h2 className="my-4">News Articles</h2>
+      <Row xs={1} sm={2} className="row-style">
         {articles.map((article, index) => {
-          return <ArticleCard key={index} article={article} />;
+          return (
+            <Col key={index}>
+              <ArticleCard article={article} />
+            </Col>
+          );
         })}
-      </div>
-    </>
+      </Row>
+    </Container>
   );
 };
 
