@@ -6,7 +6,10 @@ const ArticleCard = ({ article }) => {
     <Card>
       <Card.Body>
         <Card.Title>
-          <Link to={`/articles/${article.article_id}`}>
+          <Link
+            to={`/articles/${article.article_id}`}
+            style={{ textDecoration: "none" }}
+          >
             <strong className="article-title">{article.title}</strong>
           </Link>
         </Card.Title>
