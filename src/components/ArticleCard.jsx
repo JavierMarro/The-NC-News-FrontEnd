@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 const ArticleCard = ({ article }) => {
   return (
     <Card>
+      <Card.Img
+        className="article-img"
+        variant="top"
+        src={article.article_img_url}
+      />
       <Card.Body>
         <Card.Title>
           <Link
@@ -13,14 +18,11 @@ const ArticleCard = ({ article }) => {
             <strong className="article-title">{article.title}</strong>
           </Link>
         </Card.Title>
-        <Card.Text>
-          Posted by: {article.author} / Category: {article.topic}
+        <Card.Text className="article-details">
+          posted by: <strong>{article.author}</strong> /{" "}
+          {article.created_at.slice(0, 10)}
         </Card.Text>
-        <Card.Img
-          className="article-img"
-          variant="top"
-          src={article.article_img_url}
-        />
+
         <Card.Text className="info-card comment-emoji">
           💬 {article.comment_count}
         </Card.Text>

@@ -29,12 +29,12 @@ const App = () => {
     <>
       <canvas id="canvas"></canvas>
       <Header />
+      <NavMenu />
       <Routes>
         <Route index element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/articles/:article_id" element={<ArticleById />} />
       </Routes>
-      <NavMenu />
     </>
   );
 };

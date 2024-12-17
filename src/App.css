@@ -69,6 +69,9 @@ h2 {
   font-size: 40px;
   text-align: center;
 }
+.article-details {
+  font-size: large;
+}
 
 .body-id {
   font-size: 20px;
@@ -85,39 +88,14 @@ h2 {
   font-size: larger;
 }
 
-.nav-list {
-  background-color: rgb(213, 212, 212);
-  list-style: none;
+.nav-style {
   display: flex;
-  padding: 0;
-  margin: 0;
-}
-.nav-list li {
-  color: rgb(213, 212, 212);
-  margin-right: 20px;
-}
-
-.nav-links {
-  background-color: rgb(213, 212, 212);
-  list-style-type: none;
-  margin: 0;
-  display: flex;
-  font-size: larger;
-  justify-content: space-evenly;
   width: 100%;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin-bottom: 10px;
-  border-top: 3px solid black;
+  margin-left: 10rem;
 }
 
-.navbar-nav {
-  padding: 0;
-  margin: 0;
-  vertical-align: bottom;
-  background-color: rgb(213, 212, 212);
+.nav-font {
+  font-size: x-large;
 }
 
 #canvas {
