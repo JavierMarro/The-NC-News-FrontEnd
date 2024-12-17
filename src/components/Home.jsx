@@ -2,7 +2,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { getArticles } from "../api";
-import ArticleCard from "../components/ArticleCard";
+import ArticleCard from "./ArticleCard";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -25,7 +25,7 @@ const Home = () => {
   if (loading) {
     return (
       <>
-        <h2>Loading some articles for you...</h2>
+        <h2 className="loading">Loading some articles for you...</h2>
         <div className="lottie-gif">
           <DotLottieReact
             src="https://lottie.host/a2174cc3-398a-4a89-a109-44f83698dc6c/wfonPPPWwq.json"
@@ -35,6 +35,9 @@ const Home = () => {
         </div>
       </>
     );
+  }
+  if (error) {
+    return <h2>Oh no! Something went wrong...</h2>;
   }
 
   return (
@@ -51,7 +54,6 @@ const Home = () => {
           })}
         </Row>
       </Container>
-      {error && <p>Oh no! Something went wrong...</p>}
     </>
   );
 };

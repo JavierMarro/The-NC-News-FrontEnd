@@ -29,6 +29,10 @@ h1 {
 h2 {
   text-align: center;
 }
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+}
 .lottie-gif {
   display: flex;
   width: 300px;
@@ -43,15 +47,42 @@ h2 {
   justify-content: center;
 }
 
-.article img {
+.article-title {
+  font-size: larger;
+}
+
+.article-img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
+.img-id {
+  width: 700px;
+  margin-top: 1rem;
+  height: auto;
+  align-self: center;
+  object-fit: cover;
+}
+
+.title-id {
+  font-size: 40px;
+  text-align: center;
+}
+
+.body-id {
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .info-card {
   margin-top: 1rem;
   text-align: left;
+  font-size: large;
+}
+.comment-emoji {
+  font-size: larger;
 }
 
 .nav-list {

@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import Header from "./Pages/Header";
-import Home from "./Pages/Home";
+import Home from "./components/Home";
+import Header from "./components/Header";
+import ArticleById from "./components/ArticleById";
 import NavMenu from "./components/NavMenu";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Granim from "granim";
 import "./App.css";
 import { useEffect } from "react";
 
-function App() {
+const App = () => {
   useEffect(() => {
     new Granim({
       element: "#canvas",
@@ -31,10 +32,11 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/articles/:article_id" element={<ArticleById />} />
       </Routes>
       <NavMenu />
     </>
   );
-}
+};
 
 export default App;
