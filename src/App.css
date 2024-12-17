@@ -1,15 +1,21 @@
-/* * {
-  background-color: #fff9ec;
-  font-family: "Poppins", sans-serif;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Metamorphous&display=swap");
+
+* {
+  font-family: arial, helvetica, sans-serif;
+}
 
 header {
-  font-family: "Poppins", sans-serif;
-  font-size: 100px;
-  color: #fff9ec;
-  background-color: #093a3e;
-  text-align: center;
+  height: auto;
   padding: 10px;
+  border-bottom: 3px solid black;
+  background-color: white;
+}
+
+h1 {
+  font-family: "Metamorphous";
+  font-size: 70px;
+  color: black;
+  text-align: center;
 }
 
 h2 {
@@ -22,26 +28,25 @@ h2 {
   object-fit: cover;
 }
 
-.category-card {
-  margin-top: -2.6rem;
-  text-align: right;
+.info-card {
+  margin-top: 1rem;
+  text-align: left;
 }
 
 .nav-list {
-  background-color: #7d8491;
+  background-color: rgb(213, 212, 212);
   list-style: none;
   display: flex;
   padding: 0;
   margin: 0;
 }
 .nav-list li {
-  color: #fff9ec;
+  color: rgb(213, 212, 212);
   margin-right: 20px;
 }
 
 .nav-links {
-  background-color: #093a3e;
-  color: #fff9ec;
+  background-color: rgb(213, 212, 212);
   list-style-type: none;
   margin: 0;
   display: flex;
@@ -59,5 +64,5 @@ h2 {
   padding: 0;
   margin: 0;
   vertical-align: bottom;
-  background-color: #d6d7da;
+  background-color: rgb(213, 212, 212);
 }
