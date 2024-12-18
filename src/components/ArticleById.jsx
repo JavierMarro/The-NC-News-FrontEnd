@@ -73,12 +73,7 @@ const ArticleById = () => {
             {articleId.created_at.slice(0, 10)}
           </Card.Text>
           <Card.Text className="body-id m-3">{articleId.body}</Card.Text>
-          <Card.Text className="info-card comment-emoji m-3">
-            Number of comments: {articleId.comment_count}
-          </Card.Text>
-          <Card.Text className="info-card m-3">
-            <VoteHandler votes={articleId.votes} article_id={article_id} />
-          </Card.Text>
+          <VoteHandler votes={articleId.votes} article_id={article_id} />
         </Card.Body>
         <Comments article_id={article_id} />
       </Card>

@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import ArticleById from "./components/ArticleById";
 import NavMenu from "./components/NavMenu";
 import Users from "./components/Users";
+import Login from "./components/UserLogin";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Granim from "granim";
 import "./App.css";
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/articles/:article_id" element={<ArticleById />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </>
   );
