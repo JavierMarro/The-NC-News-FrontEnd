@@ -6,10 +6,11 @@ const CommentCard = ({ comment }) => {
       <Card className="mb-3">
         <CardBody>
           <Card.Text className="article-details">
-            <strong>{comment.author}</strong> {comment.created_at.slice(0, 10)}
+            <strong>{comment.author}</strong> /{" "}
+            {comment.created_at.slice(0, 10)}
           </Card.Text>
-          <Card.Text className="body-id">Comment: {comment.body}</Card.Text>
-          <Card.Text>Votes: {comment.votes}</Card.Text>
+          <Card.Text className="body-id">{comment.body}</Card.Text>
+          <Card.Text className="info-card">Votes: {comment.votes}</Card.Text>
         </CardBody>
       </Card>
     </Container>

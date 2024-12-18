@@ -1,9 +1,9 @@
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ArticleCard = ({ article, votes }) => {
+const ArticleCard = ({ article }) => {
   return (
-    <Card className="mb-3">
+    <Card className="mb-3" border="dark">
       <Card.Img
         className="article-img"
         variant="top"
@@ -19,13 +19,15 @@ const ArticleCard = ({ article, votes }) => {
           </Link>
         </Card.Title>
         <Card.Text className="article-details">
-          posted by: <strong>{article.author}</strong> /{" "}
-          {article.created_at.slice(0, 10)}
+          posted by: <strong>{article.author}</strong>
         </Card.Text>
         <Card.Text className="info-card comment-emoji">
           💬 {article.comment_count}
         </Card.Text>
       </Card.Body>
+      <Card.Footer>
+        <small className="text-muted">{article.created_at.slice(0, 10)}</small>
+      </Card.Footer>
     </Card>
   );
 };

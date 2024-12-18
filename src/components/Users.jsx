@@ -23,7 +23,7 @@ const Users = () => {
   if (loading) {
     return (
       <>
-        <h2 className="loading">Loading some articles for you...</h2>
+        <h2 className="loading">Loading all our users...</h2>
         <div className="lottie-gif">
           <DotLottieReact
             src="https://lottie.host/3c5a1f44-8bee-49fc-a0bb-c89698dbd088/YRwlnz4xaH.json"

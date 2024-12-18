@@ -96,6 +96,24 @@ h2 {
   justify-content: space-between;
 }
 
+.votes-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  color: #050505;
+  background-color: #e0e0e0;
+  border: 1px solid #121212;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.login-text {
+  padding: 10px;
+  text-align: center;
+  font-size: x-large;
+}
+
 .nav-style {
   display: flex;
   width: 100%;

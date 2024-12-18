@@ -54,7 +54,7 @@ const Home = () => {
     <>
       <Container>
         <h2 className="my-4">News Articles</h2>
-        <Row xs={1} sm={2} className="row-style">
+        <Row xs={1} md={2} className="g-4">
           {articles.map((article, index) => {
             return (
               <Col key={index}>

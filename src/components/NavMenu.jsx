@@ -21,6 +21,9 @@ const NavMenu = () => {
             <Nav.Link as={Link} to="/users" className="nav-font flex-grow-1">
               Users
             </Nav.Link>
+            <Nav.Link as={Link} to="/login" className="nav-font flex-grow-1">
+              Login
+            </Nav.Link>
             <NavDropdown
               title="Topics"
               id="basic-nav-dropdown"
