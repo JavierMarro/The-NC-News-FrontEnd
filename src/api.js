@@ -22,4 +22,10 @@ const getComments = (article_id) => {
   });
 };
 
-export { getArticles, getArticleById, getComments };
+const getUsers = () => {
+  return api.get("/users").then((response) => {
+    return response.data.users;
+  });
+};
+
+export { getArticles, getArticleById, getComments, getUsers };

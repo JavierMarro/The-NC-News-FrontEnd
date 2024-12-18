@@ -34,17 +34,10 @@ h2 {
   margin-top: 2rem;
 }
 .lottie-gif {
-  display: flex;
+  display: block;
   width: 300px;
   height: 300px;
-  align-items: center;
-  justify-content: center;
-}
-.lottie-gif > div {
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+  margin: auto;
 }
 
 .article-title {

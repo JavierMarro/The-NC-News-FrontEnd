@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
   return (
-    <Card>
+    <Card className="mb-3">
       <Card.Img
         className="article-img"
         variant="top"
