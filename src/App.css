@@ -81,6 +81,21 @@ h2 {
   font-size: larger;
 }
 
+.votes-card {
+  max-width: 300px;
+  margin: auto;
+  padding: 10px;
+}
+.votes-text {
+  padding: 10px;
+  text-align: center;
+  font-size: larger;
+}
+.votes-button {
+  display: flex;
+  justify-content: space-between;
+}
+
 .nav-style {
   display: flex;
   width: 100%;

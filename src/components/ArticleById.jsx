@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
 import Comments from "./Comments";
+import VoteHandler from "./VoteHandler";
 
 const ArticleById = () => {
   const params = useParams();
@@ -76,7 +77,7 @@ const ArticleById = () => {
             Number of comments: {articleId.comment_count}
           </Card.Text>
           <Card.Text className="info-card m-3">
-            Votes: {articleId.votes}
+            <VoteHandler votes={articleId.votes} article_id={article_id} />
           </Card.Text>
         </Card.Body>
         <Comments article_id={article_id} />

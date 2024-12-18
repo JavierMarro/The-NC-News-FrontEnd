@@ -28,4 +28,14 @@ const getUsers = () => {
   });
 };
 
-export { getArticles, getArticleById, getComments, getUsers };
+const updateArticleById = (article_id, input) => {
+  return api.patch(`/articles/${article_id}`, { inc_votes: input });
+};
+
+export {
+  getArticles,
+  getArticleById,
+  getComments,
+  getUsers,
+  updateArticleById,
+};
