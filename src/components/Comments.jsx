@@ -1,4 +1,5 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { Container } from "react-bootstrap";
 import CommentCard from "./CommentCard";
 import { useEffect, useState } from "react";
 import { getComments } from "../api";
@@ -42,9 +43,11 @@ const Comments = ({ article_id }) => {
 
   return (
     <>
-      <h4>
-        <strong>Comments:</strong>
-      </h4>
+      <Container>
+        <h4>
+          <strong>Comments:</strong>
+        </h4>
+      </Container>
       <ul>
         {comments.map((comment, index) => {
           return <CommentCard key={index} comment={comment} />;

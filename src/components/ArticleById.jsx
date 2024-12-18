@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
 import Comments from "./Comments";
+import VoteHandler from "./VoteHandler";
 
 const ArticleById = () => {
   const params = useParams();
   const { article_id } = params;
   const [articleId, setArticleId] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
@@ -57,25 +58,27 @@ const ArticleById = () => {
 
   return (
     <>
-      <Card>
+      <Card className="mb-3">
         <Card.Img
           className="img-id"
           variant="top"
           src={articleId.article_img_url}
         />
-        <Card.Body>
+        <Card.Body className="m-3">
           <Card.Title>
-            <strong className="title-id">{articleId.title}</strong>
+            <strong className="title-id m-3">{articleId.title}</strong>
           </Card.Title>
-          <Card.Text>
-            Posted by: {articleId.author} / Category: {articleId.topic} /
-            Created on: {articleId.created_at.slice(0, 10)}
+          <Card.Text className="article-details m-3">
+            by: <strong>{articleId.author}</strong> / Created on:{" "}
+            {articleId.created_at.slice(0, 10)}
           </Card.Text>
-          <Card.Text className="body-id">{articleId.body}</Card.Text>
-          <Card.Text className="info-card comment-emoji">
+          <Card.Text className="body-id m-3">{articleId.body}</Card.Text>
+          <Card.Text className="info-card comment-emoji m-3">
             Number of comments: {articleId.comment_count}
           </Card.Text>
-          <Card.Text className="info-card">Votes: {articleId.votes}</Card.Text>
+          <Card.Text className="info-card m-3">
+            <VoteHandler votes={articleId.votes} article_id={article_id} />
+          </Card.Text>
         </Card.Body>
         <Comments article_id={article_id} />
       </Card>
