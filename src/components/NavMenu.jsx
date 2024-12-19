@@ -21,12 +21,16 @@ const NavMenu = () => {
               className="nav-font flex-grow-1"
             >
               <Container className="nav-font ">
-                <NavDropdown.Item href="#placeholder">coding</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/home/coding">
+                  Coding
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#placeholder">cooking</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/home/cooking">
+                  Cooking
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#placeholder">
-                  football
+                <NavDropdown.Item as={Link} to="/home/football">
+                  Football
                 </NavDropdown.Item>
               </Container>
             </NavDropdown>
