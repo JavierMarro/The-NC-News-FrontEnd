@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,8 +11,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/home");
-    setUser({ username: username });
+    if (window.confirm(`Do you really want to sign in as ${username}?`)) {
+      navigate("/home");
+      setUser({ username: username });
+    }
   };
 
   return (
@@ -39,19 +41,29 @@ const Login = () => {
         <Form.Group className="mb-3">
           <Form.Label className="login-text">Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={password}
             autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder="Password"
+            placeholder="Enter password"
           />
+          <Form.Text className="text-muted">
+            Password set to be the same as the username.
+          </Form.Text>
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
+        <Container>
+          <Button
+            className="btn-flat btn-xxl"
+            variant="flat"
+            size="xxl"
+            type="submit"
+          >
+            Login
+          </Button>
+        </Container>
       </Form>
     </>
   );

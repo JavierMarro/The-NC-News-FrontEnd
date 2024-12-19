@@ -39,6 +39,10 @@ const postComment = (article_id, username, commentToPost) => {
   });
 };
 
+const deleteComment = (commentsId) => {
+  return api.delete(`/comments/${commentsId}`);
+};
+
 export {
   getArticles,
   getArticleById,
@@ -46,4 +50,5 @@ export {
   getUsers,
   updateArticleById,
   postComment,
+  deleteComment,
 };
