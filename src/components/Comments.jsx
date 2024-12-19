@@ -12,16 +12,17 @@ const Comments = ({ article_id }) => {
   const {
     user: { username },
   } = useContext(UserContext);
+  const [deletedComment, setDeletedComment] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     setNewComment(e.target.value);
     setCommentSubmitted(false);
-  }
+  };
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setIsLoading(true);
     setIsError(false);
     postComment(article_id, username, newComment)
@@ -33,7 +34,7 @@ const Comments = ({ article_id }) => {
       .catch((error) => {
         setIsError(true);
       });
-  }
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -46,7 +47,7 @@ const Comments = ({ article_id }) => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, [commentSubmitted]);
+  }, [commentSubmitted, deletedComment]);
 
   if (isLoading) {
     return (
@@ -77,8 +78,8 @@ const Comments = ({ article_id }) => {
           <Row className="mb-3 mt-3">
             <Col>
               <InputGroup>
-                <InputGroup.Text className="lg">New Comment</InputGroup.Text>
                 <Form.Control
+                  className="article-title"
                   as="textarea"
                   aria-label="With textarea"
                   onChange={handleChange}
@@ -100,7 +101,13 @@ const Comments = ({ article_id }) => {
       </Container>
       <ul>
         {comments.map((comment, index) => {
-          return <CommentCard key={index} comment={comment} />;
+          return (
+            <CommentCard
+              key={index}
+              comment={comment}
+              setDeletedComment={setDeletedComment}
+            />
+          );
         })}
       </ul>
     </>
