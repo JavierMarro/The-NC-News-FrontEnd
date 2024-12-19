@@ -5,11 +5,9 @@ import { useState } from "react";
 const VoteHandler = ({ votes, article_id }) => {
   const [upvote, setUpvote] = useState(0);
   const [downvote, setDownvote] = useState(0);
-  const [hasVoted, setHasVoted] = useState(false);
-  const [clicked, setClicked] = useState(false);
 
   function handleUpvote() {
-    if (!hasVoted) {
+    if (upvote === 0 && downvote === 0) {
       updateArticleById(article_id, +1).catch(() => {
         setUpvote((currUpvote) => {
           return currUpvote - 1;
@@ -18,13 +16,11 @@ const VoteHandler = ({ votes, article_id }) => {
       setUpvote((currUpvote) => {
         return currUpvote + 1;
       });
-      setHasVoted(true);
-      setClicked(true);
     }
   }
 
   function handleDownvote() {
-    if (!hasVoted) {
+    if (upvote === 0 && downvote === 0) {
       updateArticleById(article_id, -1).catch(() => {
         setDownvote((currDonwvote) => {
           return currDonwvote + 1;
@@ -33,8 +29,6 @@ const VoteHandler = ({ votes, article_id }) => {
       setDownvote((currDonwvote) => {
         return currDonwvote - 1;
       });
-      setHasVoted(true);
-      setClicked(true);
     }
   }
 
@@ -45,15 +39,23 @@ const VoteHandler = ({ votes, article_id }) => {
           <strong>Votes: {votes + upvote + downvote}</strong>
         </Card.Text>
         <Container className="votes-button">
-          <Button onClick={handleUpvote} variant="success" disabled={hasVoted}>
+          <Button
+            onClick={handleUpvote}
+            variant="success"
+            disabled={upvote !== 0 || downvote !== 0}
+          >
             Upvote
           </Button>
-          <Button onClick={handleDownvote} variant="danger" disabled={hasVoted}>
+          <Button
+            onClick={handleDownvote}
+            variant="danger"
+            disabled={upvote !== 0 || downvote !== 0}
+          >
             Downvote
           </Button>
         </Container>
       </Card>
-      {clicked && (
+      {(upvote !== 0 || downvote !== 0) && (
         <p className="votes-message mt-3">Vote casted successfully!</p>
       )}
     </>
