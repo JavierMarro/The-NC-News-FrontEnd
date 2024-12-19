@@ -1,42 +1,17 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { Container, Form, InputGroup, Button, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import CommentCard from "./CommentCard";
-import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { getComments, postComment } from "../api";
+import NewComment from "./NewComment";
+import { useEffect, useState } from "react";
+import { getComments } from "../api";
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
-  const [commentSubmitted, setCommentSubmitted] = useState(false);
-  const {
-    user: { username },
-  } = useContext(UserContext);
   const [deletedComment, setDeletedComment] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const handleChange = (e) => {
-    setNewComment(e.target.value);
-    setCommentSubmitted(false);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setIsError(false);
-    postComment(article_id, username, newComment)
-      .then(() => {
-        setNewComment("");
-        setCommentSubmitted(true);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsError(true);
-      });
-  };
-
-  useEffect(() => {
+  const fetchComments = () => {
     setIsLoading(true);
     getComments(article_id)
       .then((comments) => {
@@ -47,7 +22,15 @@ const Comments = ({ article_id }) => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, [commentSubmitted, deletedComment]);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [deletedComment]);
+
+  const handleCommentPosted = () => {
+    fetchComments();
+  };
 
   if (isLoading) {
     return (
@@ -74,30 +57,10 @@ const Comments = ({ article_id }) => {
         <h4>
           <strong>Comments:</strong>
         </h4>
-        <Form onSubmit={handleSubmit} className="mb-3 mt-3">
-          <Row className="mb-3 mt-3">
-            <Col>
-              <InputGroup>
-                <Form.Control
-                  className="article-title"
-                  as="textarea"
-                  aria-label="With textarea"
-                  onChange={handleChange}
-                  name="new-comment"
-                  value={newComment}
-                  type="text"
-                  required
-                  placeholder="Type your comment here..."
-                />
-              </InputGroup>
-            </Col>
-          </Row>
-          <Container className="mb-3">
-            <Button variant="dark" className="lg" type="submit">
-              Submit
-            </Button>
-          </Container>
-        </Form>
+        <NewComment
+          article_id={article_id}
+          handleCommentPosted={handleCommentPosted}
+        />
       </Container>
       <ul>
         {comments.map((comment, index) => {

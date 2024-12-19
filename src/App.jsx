@@ -1,5 +1,6 @@
 import Home from "./components/Home";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import ArticleById from "./components/ArticleById";
 import NavMenu from "./components/NavMenu";
 import Users from "./components/Users";
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/users" element={<Users />} />
         <Route path="/login" element={<Login />}></Route>
       </Routes>
+      <Footer />
     </>
   );
 };

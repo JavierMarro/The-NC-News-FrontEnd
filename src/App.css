@@ -19,6 +19,10 @@ header {
   background-color: white;
 }
 
+.footer {
+  text-align: center;
+}
+
 h1 {
   font-family: "Metamorphous";
   font-size: 70px;
