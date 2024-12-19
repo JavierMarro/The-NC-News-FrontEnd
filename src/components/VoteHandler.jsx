@@ -48,7 +48,7 @@ const VoteHandler = ({ votes, article_id }) => {
           <Button onClick={handleUpvote} variant="success" disabled={hasVoted}>
             Upvote
           </Button>
-          <Button onClick={hasVoted} variant="danger" disabled={hasVoted}>
+          <Button onClick={handleDownvote} variant="danger" disabled={hasVoted}>
             Downvote
           </Button>
         </Container>
