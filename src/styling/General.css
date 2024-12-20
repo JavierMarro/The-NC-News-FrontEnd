@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Metamorphous&display=swap");
+
+* {
+  font-family: arial, helvetica, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: "Metamorphous";
+  font-size: 70px;
+  color: black;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-size: x-large;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+}
+.lottie-gif {
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+
+#canvas {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}

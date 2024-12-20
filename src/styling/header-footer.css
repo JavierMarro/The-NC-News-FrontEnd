@@ -1,0 +1,12 @@
+header {
+  height: auto;
+  padding: 6px;
+  border-bottom: 3px solid black;
+  background-color: white;
+  font-size: large;
+}
+
+.footer {
+  text-align: center;
+  margin-top: auto;
+}

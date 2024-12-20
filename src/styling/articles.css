@@ -1,0 +1,41 @@
+.article-title {
+  font-size: larger;
+  /* color: black; */
+}
+
+.article-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.img-id {
+  width: 700px;
+  margin-top: 1rem;
+  height: auto;
+  align-self: center;
+  object-fit: cover;
+}
+
+.title-id {
+  font-size: 40px;
+  text-align: center;
+}
+.article-details {
+  font-size: large;
+}
+
+.body-id {
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.info-card {
+  margin-top: 1rem;
+  text-align: left;
+  font-size: large;
+}
+.comment-emoji {
+  font-size: larger;
+}

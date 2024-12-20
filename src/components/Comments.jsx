@@ -52,7 +52,7 @@ const Comments = ({ article_id }) => {
   }
 
   return (
-    <>
+    <section>
       <Container>
         <h4>
           <strong>Comments:</strong>
@@ -73,7 +73,7 @@ const Comments = ({ article_id }) => {
           );
         })}
       </ul>
-    </>
+    </section>
   );
 };
 

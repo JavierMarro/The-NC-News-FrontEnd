@@ -20,7 +20,7 @@ const NavMenu = () => {
               id="basic-nav-dropdown"
               className="nav-font flex-grow-1"
             >
-              <Container className="nav-font ">
+              <Container className="nav-font">
                 <NavDropdown.Item as={Link} to="/home/coding">
                   Coding
                 </NavDropdown.Item>

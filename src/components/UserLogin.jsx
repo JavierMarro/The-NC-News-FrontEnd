@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import { Form, Button, Container } from "react-bootstrap";
+import { Card, Form, Button, Container } from "react-bootstrap";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -18,7 +18,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <section>
       <h2 className="mt-3 mb-3">Sign in to access your account</h2>
       <Form onSubmit={handleSubmit} className="votes-card">
         <Form.Group className="mb-3">
@@ -65,7 +65,7 @@ const Login = () => {
           </Button>
         </Container>
       </Form>
-    </>
+    </section>
   );
 };
 

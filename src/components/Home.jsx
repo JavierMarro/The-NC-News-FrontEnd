@@ -61,7 +61,7 @@ const Home = () => {
   }
 
   return (
-    <>
+    <main>
       <Container>
         <h2 className="my-4">News Articles</h2>
         <Row xs={1} sm={2} md={3} lg={3} className="g-4">
@@ -74,7 +74,7 @@ const Home = () => {
           })}
         </Row>
       </Container>
-    </>
+    </main>
   );
 };
 

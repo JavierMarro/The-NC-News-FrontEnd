@@ -57,7 +57,7 @@ const ArticleById = () => {
   }
 
   return (
-    <>
+    <section>
       <Card className="mb-3">
         <Card.Img
           className="img-id"
@@ -77,7 +77,7 @@ const ArticleById = () => {
         </Card.Body>
         <Comments article_id={article_id} />
       </Card>
-    </>
+    </section>
   );
 };
 
