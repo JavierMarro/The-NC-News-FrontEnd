@@ -1,18 +1,23 @@
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
   const { topic } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortBy = searchParams.get("sort_by") || "created_at";
+  const orderBy = searchParams.get("order") || "DESC";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getArticles()
+    setLoading(true);
+    getArticles(sortBy, orderBy)
       .then((data) => {
         if (topic !== undefined) {
           const filteredArticles = data.filter((filteredTopic) => {
@@ -22,48 +27,63 @@ const Home = () => {
           setLoading(false);
         } else {
           setArticles(data);
-          setLoading(false);
         }
+        setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
         setError(true);
       });
-  }, [topic]);
+  }, [topic, sortBy, orderBy]);
+
+  const handleSortBy = (e) => {
+    const selectedSortBy = e.target.value;
+    setSearchParams({
+      sort_by: selectedSortBy,
+      order: orderBy,
+    });
+  };
+
+  const handleOrderBy = () => {
+    const selectedOrderBy = orderBy === "ASC" ? "DESC" : "ASC";
+    setSearchParams({
+      sort_by: sortBy,
+      order: selectedOrderBy,
+    });
+  };
 
   if (loading) {
-    return (
-      <>
-        <h2 className="loading">Loading some articles for you...</h2>
-        <div className="lottie-gif">
-          <DotLottieReact
-            src="https://lottie.host/a2174cc3-398a-4a89-a109-44f83698dc6c/wfonPPPWwq.json"
-            loop
-            autoplay
-          />
-        </div>
-      </>
-    );
+    return <Loading />;
   }
   if (error) {
-    return (
-      <>
-        <h2 className="loading">Oh no! Something went wrong...</h2>
-        <div className="lottie-gif">
-          <DotLottieReact
-            src="https://lottie.host/c0663d83-27a8-4aa9-9279-84e3445e78a7/z7fWPxOZrY.json"
-            loop
-            autoplay
-          />
-        </div>
-      </>
-    );
+    return <Error />;
   }
 
   return (
     <main>
       <Container>
         <h2 className="my-4">News Articles</h2>
+        <Row className="mb-4">
+          <Col>
+            <label htmlFor="sortBy">Sort Articles By</label>
+            <select
+              id="sortBy"
+              value={sortBy}
+              onChange={handleSortBy}
+              className="sortby"
+            >
+              <option value="created_at">Date Created</option>
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="votes">Votes</option>
+            </select>
+          </Col>
+          <Col>
+            <button onClick={handleOrderBy} className="orderby">
+              Order: {orderBy === "ASC" ? "Ascending" : "Descending"}
+            </button>
+          </Col>
+        </Row>
         <Row xs={1} sm={2} md={3} lg={3} className="g-4">
           {articles.map((article, index) => {
             return (

@@ -1,10 +1,11 @@
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
 import Comments from "./Comments";
 import VoteHandler from "./VoteHandler";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const ArticleById = () => {
   const params = useParams();
@@ -27,33 +28,11 @@ const ArticleById = () => {
   }, [article_id]);
 
   if (isLoading) {
-    return (
-      <>
-        <h2 className="loading">Loading the article...</h2>
-        <div className="lottie-gif">
-          <DotLottieReact
-            src="https://lottie.host/a2174cc3-398a-4a89-a109-44f83698dc6c/wfonPPPWwq.json"
-            loop
-            autoplay
-          />
-        </div>
-      </>
-    );
+    return <Loading />;
   }
 
   if (isError) {
-    return (
-      <>
-        <h2 className="loading">Oh no! Something went wrong...</h2>
-        <div className="lottie-gif">
-          <DotLottieReact
-            src="https://lottie.host/c0663d83-27a8-4aa9-9279-84e3445e78a7/z7fWPxOZrY.json"
-            loop
-            autoplay
-          />
-        </div>
-      </>
-    );
+    return <Error />;
   }
 
   return (
