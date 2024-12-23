@@ -4,10 +4,17 @@ const api = axios.create({
   baseURL: "https://the-nc-news.onrender.com/api",
 });
 
-const getArticles = () => {
-  return api.get("/articles").then((response) => {
-    return response.data.articles;
-  });
+const getArticles = (sortBy = "created_at", order = "DESC") => {
+  return api
+    .get("/articles", {
+      params: {
+        sort_by: sortBy,
+        order: order,
+      },
+    })
+    .then((response) => {
+      return response.data.articles;
+    });
 };
 
 const getArticleById = (article_id) => {
