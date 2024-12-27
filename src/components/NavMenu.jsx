@@ -7,7 +7,11 @@ import { NavDropdown } from "react-bootstrap";
 
 const NavMenu = () => {
   return (
-    <Navbar bg="dark" data-bs-theme="dark" expand={"xl"} sticky="top">
+    <Navbar
+      className="p-3 mb-2 bg-secondary text-white"
+      expand={"xl"}
+      sticky="top"
+    >
       <Container>
         <Navbar.Brand as={Link} to="/home" className="nav-font ">
           <strong className="nav-font">Home</strong>

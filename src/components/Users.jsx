@@ -52,7 +52,7 @@ const Users = () => {
   return (
     <Container>
       <h2 className="my-4">Users:</h2>
-      <Row xs={1} sm={2} md={3} lg={4} xl={5} className="row-style">
+      <Row xs={1} sm={2} md={3} lg={3} xl={6} className="row-style">
         {userDetails.map((user, index) => (
           <Col key={index}>
             <Card className="mb-3">
