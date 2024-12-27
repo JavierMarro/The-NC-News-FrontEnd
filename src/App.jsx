@@ -7,41 +7,34 @@ import Users from "./components/Users";
 import Login from "./components/UserLogin";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Granim from "granim";
+import { Container, Button } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { useState } from "react";
 
 const App = () => {
-  useEffect(() => {
-    new Granim({
-      element: "#canvas",
-      direction: "left-right",
-      isPausedWhenNotInView: true,
-      states: {
-        "default-state": {
-          gradients: [
-            ["#FFFFFF", "#F0F0F0"],
-            ["#F0F0F0", "#E0E0E0"],
-            ["#E0E0E0", "#A0A0A0"],
-          ],
-        },
-      },
-    });
-  }, []);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    const htmlElement = document.querySelector("html");
+    htmlElement.setAttribute("data-bs-theme", isDarkMode ? "dark" : "light");
+  };
+
   return (
     <>
-      <canvas id="canvas"></canvas>
-      <Header />
-      <NavMenu />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/home/:topic" element={<Home />} />
-        <Route path="/articles/:article_id" element={<ArticleById />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/login" element={<Login />}></Route>
-      </Routes>
-      <Footer />
+      <Container className="py-4">
+        <Header isDarkMode={isDarkMode} toggleTheme={toggleDarkMode} />
+        <NavMenu />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/:topic" element={<Home />} />
+          <Route path="/articles/:article_id" element={<ArticleById />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+        <Footer />
+      </Container>
     </>
   );
 };
