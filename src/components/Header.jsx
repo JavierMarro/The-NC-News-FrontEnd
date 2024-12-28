@@ -26,6 +26,7 @@ const Header = ({ isDarkMode, toggleTheme }) => {
             textAlign: "right",
             marginLeft: "1rem",
             marginRight: "1rem",
+            color: "black",
           }}
         >
           Logged in: <br />
