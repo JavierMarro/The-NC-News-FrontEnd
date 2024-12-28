@@ -4,17 +4,14 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown } from "react-bootstrap";
-import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
 
 const NavMenu = () => {
-  const { user } = useContext(UserContext);
   return (
     <Navbar
       className="p-3 mb-2 bg-secondary text-white"
       expand={"xl"}
       sticky="top"
-      style={{ height: "100px" }}
+      style={{ height: "auto" }}
     >
       <Container>
         <Navbar.Brand as={Link} to="/home" className="nav-font ">
@@ -51,12 +48,6 @@ const NavMenu = () => {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <div className="d-flex ml-auto align-items-center">
-        <p style={{ textAlign: "right" }}>
-          Logged in: <br />
-          <strong>{user.username}</strong>
-        </p>
-      </div>
     </Navbar>
   );
 };
