@@ -52,7 +52,7 @@ const NavMenu = () => {
         </Navbar.Collapse>
       </Container>
       <p style={{ textAlign: "right" }}>
-        Logged in as: <br />
+        Logged in: <br />
         <strong>{user.username}</strong>
       </p>
     </Navbar>
