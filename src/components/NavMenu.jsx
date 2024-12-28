@@ -14,7 +14,7 @@ const NavMenu = () => {
       className="p-3 mb-2 bg-secondary text-white"
       expand={"xl"}
       sticky="top"
-      style={{ height: "75px" }}
+      style={{ height: "100px" }}
     >
       <Container>
         <Navbar.Brand as={Link} to="/home" className="nav-font ">
@@ -51,10 +51,12 @@ const NavMenu = () => {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <p style={{ textAlign: "right" }}>
-        Logged in: <br />
-        <strong>{user.username}</strong>
-      </p>
+      <div className="d-flex ml-auto align-items-center">
+        <p style={{ textAlign: "right" }}>
+          Logged in: <br />
+          <strong>{user.username}</strong>
+        </p>
+      </div>
     </Navbar>
   );
 };
