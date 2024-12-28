@@ -11,7 +11,7 @@
 The NC News is a project which aims to simulate the creation of a real-world news service. The back-end repository can be found [here](https://github.com/JavierMarro/The-NC-News-BackEnd).
 
 The hosted version of this website can be found here: https://jmr-thencnews.netlify.app/home
-The hosted back-end API has been hosted here: https://the-nc-news.onrender.com
+Link to the hosted back-end API: https://the-nc-news.onrender.com
 
 Users can:
 
@@ -60,7 +60,9 @@ npm run dev
 ```
 
 You should see now this in your terminal:
+
 ![Vite](https://i.imgur.com/0mCsKCW.png)
+
 To see ou can either hold the Ctrl or Command button and click on the localhost link in the terminal or copy and past the address into your browser.
 
 ## - Documentation

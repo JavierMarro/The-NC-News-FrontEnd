@@ -12,7 +12,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -22,9 +22,9 @@ const App = () => {
 
   return (
     <>
+      <Header isDarkMode={isDarkMode} toggleTheme={toggleDarkMode} />
+      <NavMenu />
       <Container className="py-4">
-        <Header isDarkMode={isDarkMode} toggleTheme={toggleDarkMode} />
-        <NavMenu />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
