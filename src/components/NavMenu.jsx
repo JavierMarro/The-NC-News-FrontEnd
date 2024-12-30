@@ -8,14 +8,14 @@ import { NavDropdown } from "react-bootstrap";
 const NavMenu = () => {
   return (
     <Navbar
-      className="p-3 mb-2 bg-secondary text-white"
+      className="p-1 mb-2 bg-secondary text-white"
       expand={"xl"}
       sticky="top"
       style={{ height: "auto" }}
     >
       <Container>
-        <Navbar.Brand as={Link} to="/home" className="nav-font ">
-          <strong className="nav-font">Home</strong>
+        <Navbar.Brand as={Link} to="/home" className="nav-font">
+          <strong className="nav-font">The NC News</strong>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="me-auto">
@@ -23,7 +23,7 @@ const NavMenu = () => {
             <NavDropdown
               title="Topics"
               id="basic-nav-dropdown"
-              className="nav-font flex-grow-1"
+              className="nav-font mb-0 flex-grow-1"
             >
               <Container className="comment-emoji">
                 <NavDropdown.Item as={Link} to="/home/coding">
