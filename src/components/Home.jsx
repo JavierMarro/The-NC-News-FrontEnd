@@ -61,39 +61,37 @@ const Home = () => {
 
   return (
     <main>
-      <Container>
-        <h2 className="my-4">News Articles</h2>
-        <Row className="mb-4">
-          <Col>
-            <label htmlFor="sortBy">Sort Articles By</label>
-            <select
-              id="sortBy"
-              value={sortBy}
-              onChange={handleSortBy}
-              className="sortby"
-            >
-              <option value="created_at">Date Created</option>
-              <option value="title">Title</option>
-              <option value="author">Author</option>
-              <option value="votes">Votes</option>
-            </select>
-          </Col>
-          <Col>
-            <button onClick={handleOrderBy} className="orderby">
-              Order: {orderBy === "ASC" ? "Ascending" : "Descending"}
-            </button>
-          </Col>
-        </Row>
-        <Row xs={1} sm={2} md={3} lg={3} className="g-4">
-          {articles.map((article, index) => {
-            return (
-              <Col key={index}>
-                <ArticleCard article={article} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <h2 className="my-4">News Articles</h2>
+      <Row className="mb-4">
+        <Col>
+          <label htmlFor="sortBy">Sort Articles By</label>
+          <select
+            id="sortBy"
+            value={sortBy}
+            onChange={handleSortBy}
+            className="sortby"
+          >
+            <option value="created_at">Date Created</option>
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="votes">Votes</option>
+          </select>
+        </Col>
+        <Col>
+          <button onClick={handleOrderBy} className="orderby">
+            Order: {orderBy === "ASC" ? "Ascending" : "Descending"}
+          </button>
+        </Col>
+      </Row>
+      <Row xs={1} sm={2} md={3} lg={3} className="g-4">
+        {articles.map((article, index) => {
+          return (
+            <Col key={index}>
+              <ArticleCard article={article} />
+            </Col>
+          );
+        })}
+      </Row>
     </main>
   );
 };
