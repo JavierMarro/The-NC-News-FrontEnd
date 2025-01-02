@@ -59,24 +59,35 @@ h2 {
 }
 
 .img-id {
-  width: 700px;
-  margin-top: 1rem;
+  width: 100%;
   height: auto;
+  max-height: 500px;
+  margin-top: 1rem;
   align-self: center;
   object-fit: cover;
 }
 
 .title-id {
   font-size: 40px;
-  text-align: center;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  display: block;
 }
+
+@media (max-width: 480px) {
+  .title-id {
+    font-size: 30px;
+  }
+}
+
 .article-details {
   font-size: medium;
 }
 
 .body-id {
   font-size: 20px;
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
 }
 
@@ -142,6 +153,22 @@ h2 {
 
 .nav-font {
   font-size: large;
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    overflow-x: hidden;
+  }
+
+  .nav-dropdown {
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown-menu {
+    min-width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 .sortby {

@@ -37,25 +37,23 @@ const ArticleById = () => {
 
   return (
     <section>
-      <Card className="mb-3">
-        <Card.Img
-          className="img-id"
-          variant="top"
-          src={articleId.article_img_url}
-        />
-        <Card.Body className="m-3">
-          <Card.Title>
-            <strong className="title-id m-3">{articleId.title}</strong>
-          </Card.Title>
-          <Card.Text className="article-details m-3">
-            by: <strong>{articleId.author}</strong> / Created on:{" "}
-            {articleId.created_at.slice(0, 10)}
-          </Card.Text>
-          <Card.Text className="body-id m-3">{articleId.body}</Card.Text>
-          <VoteHandler votes={articleId.votes} article_id={article_id} />
-        </Card.Body>
-        <Comments article_id={article_id} />
-      </Card>
+      <Card.Img
+        className="img-id"
+        variant="top"
+        src={articleId.article_img_url}
+      />
+      <Card.Body className="m-3">
+        <Card.Title>
+          <strong className="title-id m-3">{articleId.title}</strong>
+        </Card.Title>
+        <Card.Text className="article-details m-3">
+          by: <strong>{articleId.author}</strong> / Created on:{" "}
+          {articleId.created_at.slice(0, 10)}
+        </Card.Text>
+        <Card.Text className="body-id m-3">{articleId.body}</Card.Text>
+        <VoteHandler votes={articleId.votes} article_id={article_id} />
+      </Card.Body>
+      <Comments article_id={article_id} />
     </section>
   );
 };
