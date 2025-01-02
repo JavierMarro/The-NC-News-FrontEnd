@@ -17,7 +17,11 @@ const Header = ({ isDarkMode, toggleTheme }) => {
       }}
     >
       <Link to="/home" style={{ textDecoration: "none" }}>
-        <img className="header-logo" src={logo} alt="The NC News Logo" />
+        <img
+          className="header-logo mb-2 mt-2"
+          src={logo}
+          alt="The NC News Logo"
+        />
       </Link>
       <div className="d-flex ml-auto align-items-center">
         <Button variant="secondary" onClick={toggleTheme}>
