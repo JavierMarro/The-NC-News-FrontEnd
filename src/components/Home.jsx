@@ -1,10 +1,11 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import Error from "./Error";
+import NewArticle from "./NewArticle";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -61,6 +62,7 @@ const Home = () => {
 
   return (
     <main>
+      <Button onClick={NewArticle}>Post Article</Button>
       <h2 className="my-4">News Articles</h2>
       <Row className="mb-4">
         <Col>
