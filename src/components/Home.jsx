@@ -62,8 +62,7 @@ const Home = () => {
 
   return (
     <main>
-      <Button onClick={NewArticle}>Post Article</Button>
-      <h2 className="my-4">News Articles</h2>
+      <NewArticle />
       <Row className="mb-4">
         <Col>
           <label htmlFor="sortBy">Sort Articles By</label>
