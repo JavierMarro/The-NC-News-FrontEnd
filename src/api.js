@@ -23,6 +23,12 @@ const getArticleById = (article_id) => {
   });
 };
 
+const postArticle = (newArticle) => {
+  return api.post("/articles", newArticle).then((response) => {
+    return response.data.article;
+  });
+};
+
 const getComments = (article_id) => {
   return api.get(`/articles/${article_id}/comments`).then((response) => {
     return response.data.comments;
@@ -50,12 +56,20 @@ const deleteComment = (commentsId) => {
   return api.delete(`/comments/${commentsId}`);
 };
 
+const getTopics = () => {
+  return api.get("/topics").then((response) => {
+    return response.data.topics;
+  });
+};
+
 export {
   getArticles,
   getArticleById,
+  postArticle,
   getComments,
   getUsers,
   updateArticleById,
   postComment,
   deleteComment,
+  getTopics,
 };
