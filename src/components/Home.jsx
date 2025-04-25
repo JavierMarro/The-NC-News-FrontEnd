@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Pagination } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { getArticles } from "../api";
@@ -15,27 +15,33 @@ const Home = () => {
   const orderBy = searchParams.get("order") || "DESC";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const articlesPerPage = 10;
+
+  // reset page when navigating to new topic or homepage
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [topic, sortBy, orderBy]);
 
   useEffect(() => {
     setLoading(true);
-    getArticles(sortBy, orderBy)
+    getArticles(topic, sortBy, orderBy, currentPage, articlesPerPage)
       .then((data) => {
-        if (topic !== undefined) {
-          const filteredArticles = data.filter((filteredTopic) => {
-            return filteredTopic.topic === topic;
-          });
-          setArticles(filteredArticles);
-          setLoading(false);
-        } else {
-          setArticles(data);
-        }
+        setArticles(data.articles); //Directly setting articles from API res
+        const totalCount = data.total_count;
+        setTotalPages(Math.ceil(totalCount / articlesPerPage));
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
         setError(true);
       });
-  }, [topic, sortBy, orderBy]);
+  }, [topic, sortBy, orderBy, currentPage, articlesPerPage]);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleSortBy = (e) => {
     const selectedSortBy = e.target.value;
@@ -93,6 +99,27 @@ const Home = () => {
           );
         })}
       </Row>
+      <Pagination className="mt-4 justify-content-center">
+        <Pagination.Prev
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        />
+
+        {[...Array(totalPages)].map((_, index) => (
+          <Pagination.Item
+            key={index + 1}
+            active={index + 1 === currentPage}
+            onClick={() => handlePageChange(index + 1)}
+          >
+            {index + 1}
+          </Pagination.Item>
+        ))}
+
+        <Pagination.Next
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        />
+      </Pagination>
     </main>
   );
 };
