@@ -1,3 +1,4 @@
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { Card, Button, Container } from "react-bootstrap";
 import { updateArticleById } from "../api";
 import { useState } from "react";
@@ -35,28 +36,32 @@ const VoteHandler = ({ votes, article_id }) => {
   return (
     <>
       <Card className="votes-card">
-        <Card.Text className="votes-text">
-          <strong>Votes: {votes + upvote + downvote}</strong>
-        </Card.Text>
-        <Container className="votes-button">
+        <Container
+          className="votes-button mb-2"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <Button
             onClick={handleUpvote}
             variant="success"
             disabled={upvote !== 0 || downvote !== 0}
+            className="me-2"
           >
-            Upvote
+            <i className="bi bi-hand-thumbs-up"></i>
           </Button>
           <Button
             onClick={handleDownvote}
             variant="danger"
             disabled={upvote !== 0 || downvote !== 0}
           >
-            Downvote
+            <i className="bi bi-hand-thumbs-down"></i>
           </Button>
         </Container>
+        <Card.Text className="votes-text text-center">
+          <strong>Votes: {votes + upvote + downvote}</strong>
+        </Card.Text>
       </Card>
       {(upvote !== 0 || downvote !== 0) && (
-        <p className="votes-message mt-3">Vote casted successfully!</p>
+        <p className="votes-message mt-3">Thanks for casting your vote!</p>
       )}
     </>
   );
