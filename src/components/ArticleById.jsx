@@ -1,16 +1,22 @@
-import { Card } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getArticleById } from "../api";
+import { Card, Button } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { deleteArticle, getArticleById } from "../api";
 import Comments from "./Comments";
 import VoteHandler from "./VoteHandler";
 import Loading from "./Loading";
 import Error from "./Error";
+import { UserContext } from "../contexts/UserContext";
 
 const ArticleById = () => {
   const params = useParams();
   const { article_id } = params;
+  const {
+    user: { username },
+  } = useContext(UserContext);
   const [articleId, setArticleId] = useState({});
+  const [deletedArticle, setDeletedArticle] = useState(false);
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -26,6 +32,15 @@ const ArticleById = () => {
         setIsLoading(false);
       });
   }, [article_id]);
+
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this article?")) {
+      deleteArticle(article_id).then(() => {
+        setDeletedArticle(true);
+        navigate("/home");
+      });
+    }
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -51,8 +66,19 @@ const ArticleById = () => {
           {articleId.created_at.slice(0, 10)}
         </Card.Text>
         <Card.Text className="body-id m-3">{articleId.body}</Card.Text>
+        {username === articleId.author ? (
+          <Button
+            onClick={handleDelete}
+            variant="danger"
+            className="lg m-3 "
+            type="submit"
+          >
+            Delete this article
+          </Button>
+        ) : null}
         <VoteHandler votes={articleId.votes} article_id={article_id} />
       </Card.Body>
+
       <Comments article_id={article_id} />
     </section>
   );

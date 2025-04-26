@@ -42,6 +42,10 @@ const postArticle = (newArticle) => {
   });
 };
 
+const deleteArticle = (article_id) => {
+  return api.delete(`/articles/${article_id}`);
+};
+
 const getComments = (article_id) => {
   return api.get(`/articles/${article_id}/comments`).then((response) => {
     return response.data.comments;
@@ -79,6 +83,7 @@ export {
   getArticles,
   getArticleById,
   postArticle,
+  deleteArticle,
   getComments,
   getUsers,
   updateArticleById,
