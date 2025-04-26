@@ -37,7 +37,7 @@ const NewArticle = () => {
     setIsError(false);
     setIsSuccess(false);
     postArticle(newArticle)
-      .then(() => {
+      .then((article) => {
         setNewArticle({
           author: user.username,
           title: "",
@@ -47,7 +47,7 @@ const NewArticle = () => {
         });
         setIsLoading(false);
         setIsSuccess(true);
-        navigate("/");
+        navigate(`/articles/${article.article_id}`);
       })
       .catch((error) => {
         setIsError(true);
