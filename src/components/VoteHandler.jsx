@@ -1,15 +1,14 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Card, Button, Container } from "react-bootstrap";
-import { updateArticleById } from "../api";
 import { useState } from "react";
 
-const VoteHandler = ({ votes, article_id }) => {
+const VoteHandler = ({ votes, id, votingFn }) => {
   const [upvote, setUpvote] = useState(0);
   const [downvote, setDownvote] = useState(0);
 
   function handleUpvote() {
     if (upvote === 0 && downvote === 0) {
-      updateArticleById(article_id, +1).catch(() => {
+      votingFn(id, +1).catch(() => {
         setUpvote((currUpvote) => {
           return currUpvote - 1;
         });
@@ -22,13 +21,13 @@ const VoteHandler = ({ votes, article_id }) => {
 
   function handleDownvote() {
     if (upvote === 0 && downvote === 0) {
-      updateArticleById(article_id, -1).catch(() => {
-        setDownvote((currDonwvote) => {
-          return currDonwvote + 1;
+      votingFn(id, -1).catch(() => {
+        setDownvote((currDownvote) => {
+          return currDownvote + 1;
         });
       });
-      setDownvote((currDonwvote) => {
-        return currDonwvote - 1;
+      setDownvote((currDownvote) => {
+        return currDownvote - 1;
       });
     }
   }

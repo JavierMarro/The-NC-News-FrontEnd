@@ -36,6 +36,10 @@ const getArticleById = (article_id) => {
   });
 };
 
+const updateArticleById = (article_id, input) => {
+  return api.patch(`/articles/${article_id}`, { inc_votes: input });
+};
+
 const postArticle = (newArticle) => {
   return api.post("/articles", newArticle).then((response) => {
     return response.data.article;
@@ -52,14 +56,8 @@ const getComments = (article_id) => {
   });
 };
 
-const getUsers = () => {
-  return api.get("/users").then((response) => {
-    return response.data.users;
-  });
-};
-
-const updateArticleById = (article_id, input) => {
-  return api.patch(`/articles/${article_id}`, { inc_votes: input });
+const updateCommentById = (commentsId, input) => {
+  return api.patch(`/comments/${commentsId}`, { inc_votes: input });
 };
 
 const postComment = (article_id, username, commentToPost) => {
@@ -73,6 +71,12 @@ const deleteComment = (commentsId) => {
   return api.delete(`/comments/${commentsId}`);
 };
 
+const getUsers = () => {
+  return api.get("/users").then((response) => {
+    return response.data.users;
+  });
+};
+
 const getTopics = () => {
   return api.get("/topics").then((response) => {
     return response.data.topics;
@@ -82,12 +86,13 @@ const getTopics = () => {
 export {
   getArticles,
   getArticleById,
+  updateArticleById,
   postArticle,
   deleteArticle,
   getComments,
-  getUsers,
-  updateArticleById,
+  updateCommentById,
   postComment,
   deleteComment,
+  getUsers,
   getTopics,
 };

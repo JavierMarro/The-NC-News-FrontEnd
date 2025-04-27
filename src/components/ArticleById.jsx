@@ -1,7 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { deleteArticle, getArticleById } from "../api";
+import { deleteArticle, getArticleById, updateArticleById } from "../api";
 import Comments from "./Comments";
 import VoteHandler from "./VoteHandler";
 import Loading from "./Loading";
@@ -73,10 +73,14 @@ const ArticleById = () => {
             className="lg m-3 "
             type="submit"
           >
-            Delete this article
+            Delete article
           </Button>
         ) : null}
-        <VoteHandler votes={articleId.votes} article_id={article_id} />
+        <VoteHandler
+          votes={articleId.votes}
+          id={article_id}
+          votingFn={updateArticleById}
+        />
       </Card.Body>
 
       <Comments article_id={article_id} />
