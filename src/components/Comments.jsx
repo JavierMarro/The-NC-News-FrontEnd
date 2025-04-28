@@ -9,7 +9,7 @@ const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [deletedComment, setDeletedComment] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  // const [isError, setIsError] = useState(false);
 
   const fetchComments = () => {
     setIsLoading(true);
@@ -19,7 +19,7 @@ const Comments = ({ article_id }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setIsError(true);
+        // setIsError(true);
         setIsLoading(false);
       });
   };
@@ -46,10 +46,10 @@ const Comments = ({ article_id }) => {
       </>
     );
   }
-
-  if (isError) {
-    return <h3>Oh no! No comments to show...</h3>;
-  }
+  // Code below is commented out to avoid showing an error message when there are no comments (which is always the case when the article is first created)
+  // if (isError) {
+  //   return <h3>Oh no! No comments to show...</h3>;
+  // }
 
   return (
     <section>

@@ -33,6 +33,7 @@ const CommentCard = ({ comment, setDeletedComment }) => {
               votes={comment.votes}
               id={comment.comment_id}
               votingFn={updateCommentById}
+              variant="comment"
             />
             {username === comment.author ? (
               <Button
