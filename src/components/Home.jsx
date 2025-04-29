@@ -17,7 +17,7 @@ const Home = () => {
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const articlesPerPage = 10;
+  const articlesPerPage = 9;
 
   // reset page when navigating to new topic or homepage
   useEffect(() => {

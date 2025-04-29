@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import MoonIcon from "./MoonIcon";
+import SunIcon from "./SunIcon";
 
 const Header = ({ isDarkMode, toggleTheme }) => {
   const { user } = useContext(UserContext);
@@ -24,9 +26,19 @@ const Header = ({ isDarkMode, toggleTheme }) => {
         />
       </Link>
       <div className="d-flex ml-auto align-items-center">
-        <Button variant="secondary" onClick={toggleTheme}>
-          {isDarkMode ? "Dark Theme" : "Light Theme"}
-        </Button>
+        <label className="theme-switch">
+          <input
+            type="checkbox"
+            checked={isDarkMode}
+            onChange={toggleTheme}
+            aria-label="Toggle dark mode"
+          />
+          <span className="slider">
+            <span className="icon">
+              {isDarkMode ? <MoonIcon /> : <SunIcon />}
+            </span>
+          </span>
+        </label>
         <p
           className="nav-font"
           style={{
