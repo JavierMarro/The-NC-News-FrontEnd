@@ -27,6 +27,59 @@ header {
   margin: 0 auto;
 }
 
+.theme-switch {
+  display: inline-block;
+  position: relative;
+  width: 56px;
+  height: 32px;
+  margin-right: 1rem;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #89c0fa;
+  border-radius: 32px;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch input:checked + .slider {
+  background: #333;
+}
+
+.theme-switch .icon {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-switch input:checked + .slider .icon {
+  transform: translateX(24px) rotate(-20deg);
+}
+
+/* box-shadow for the slider */
+.theme-switch .slider {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 @media (max-width: 768px) {
   .header-logo {
     max-height: 80px;
