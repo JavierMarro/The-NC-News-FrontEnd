@@ -48,8 +48,17 @@ const Header = ({ isDarkMode, toggleTheme }) => {
             color: "black",
           }}
         >
-          Logged in: <br />
-          <strong>{user.username}</strong>
+          {user ? (
+            <>
+              Logged in: <br />
+              <strong>{user.username}</strong>
+            </>
+          ) : (
+            <>
+              You are not <br />
+              logged in
+            </>
+          )}
         </p>
       </div>
     </header>
