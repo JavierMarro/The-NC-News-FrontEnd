@@ -55,13 +55,28 @@ const Users = () => {
       <Row xs={1} sm={2} md={3} lg={3} xl={6} className="row-style">
         {userDetails.map((user, index) => (
           <Col key={index}>
-            <Card className="mb-3">
-              <Card.Img
-                className="article-img"
-                variant="top"
-                src={user.avatar_url}
-              />
-              <Card.Body>
+            <Card className="mb-3" style={{ height: "300px" }}>
+              <div
+                style={{
+                  width: "120px",
+                  height: "120px",
+                  margin: "1rem auto",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                }}
+              >
+                <Card.Img
+                  className="article-img"
+                  variant="top"
+                  src={user.avatar_url}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+              <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title variant="bottom">
                   <strong>{user.username}</strong>
                 </Card.Title>

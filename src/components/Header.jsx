@@ -54,7 +54,10 @@ const Header = ({ isDarkMode, toggleTheme }) => {
               <strong>{user.username}</strong>
             </>
           ) : (
-            "You are not logged in"
+            <>
+              You are not <br />
+              logged in
+            </>
           )}
         </p>
       </div>
