@@ -1,11 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown } from "react-bootstrap";
+import { UserContext } from "../contexts/UserContext";
 
 const NavMenu = () => {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      setUser(null);
+      navigate("/home");
+    }
+  };
+
   return (
     <Navbar
       className="p-1 mb-2 bg-secondary text-white"
@@ -42,9 +53,19 @@ const NavMenu = () => {
             <Nav.Link as={Link} to="/users" className="nav-font flex-grow-1">
               Users
             </Nav.Link>
-            <Nav.Link as={Link} to="/login" className="nav-font flex-grow-1">
-              Login
-            </Nav.Link>
+            {user ? (
+              <Nav.Link
+                onClick={handleSignOut}
+                className="nav-font flex-grow-1"
+                style={{ cursor: "pointer" }}
+              >
+                Sign Out
+              </Nav.Link>
+            ) : (
+              <Nav.Link as={Link} to="/login" className="nav-font flex-grow-1">
+                Login
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
