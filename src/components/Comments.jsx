@@ -5,7 +5,7 @@ import NewComment from "./NewComment";
 import { useEffect, useState } from "react";
 import { getComments } from "../api";
 
-const Comments = ({ article_id }) => {
+const Comments = ({ article_id, user }) => {
   const [comments, setComments] = useState([]);
   const [deletedComment, setDeletedComment] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -57,18 +57,22 @@ const Comments = ({ article_id }) => {
         <h4>
           <strong>Comments:</strong>
         </h4>
-        <NewComment
-          article_id={article_id}
-          handleCommentPosted={handleCommentPosted}
-        />
+        {user && (
+          <NewComment
+            article_id={article_id}
+            handleCommentPosted={handleCommentPosted}
+            user={user}
+          />
+        )}
       </Container>
       <ul>
-        {comments.map((comment, index) => {
+        {comments.map((comment) => {
           return (
             <CommentCard
-              key={index}
+              key={comment.comment_id}
               comment={comment}
               setDeletedComment={setDeletedComment}
+              user={user}
             />
           );
         })}

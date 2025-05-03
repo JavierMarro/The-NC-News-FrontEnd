@@ -53,8 +53,8 @@ const Users = () => {
     <Container>
       <h2 className="my-4">Users:</h2>
       <Row xs={1} sm={2} md={3} lg={3} xl={6} className="row-style">
-        {userDetails.map((user, index) => (
-          <Col key={index}>
+        {userDetails.map((user) => (
+          <Col key={user.username}>
             <Card className="mb-3" style={{ height: "300px" }}>
               <div
                 style={{
@@ -69,6 +69,7 @@ const Users = () => {
                   className="article-img"
                   variant="top"
                   src={user.avatar_url}
+                  loading="lazy"
                   style={{
                     width: "100%",
                     height: "100%",

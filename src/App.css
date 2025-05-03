@@ -198,10 +198,29 @@ h2 {
   display: flexbox;
 }
 
+.navbar,
+.navbar * {
+  color: #111 !important;
+  background-color: #c7c1bd !important;
+}
+/* Burger menu lines always black */
+.navbar-toggler {
+  border-color: #111 !important;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+/* NavDropdown divider lines always black */
+.dropdown-divider {
+  border: 1px solid #111 !important;
+}
+
 .nav-style {
   display: flex;
   width: 100%;
-  margin-left: 10rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0;
 }
 
 .nav-font {
@@ -217,7 +236,6 @@ h2 {
     max-width: 100%;
     white-space: nowrap;
   }
-
   .nav-dropdown-menu {
     min-width: 100%;
     overflow-x: hidden;

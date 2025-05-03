@@ -11,9 +11,7 @@ import { UserContext } from "../contexts/UserContext";
 const ArticleById = () => {
   const params = useParams();
   const { article_id } = params;
-  const {
-    user: { username },
-  } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [articleId, setArticleId] = useState({});
   const [deletedArticle, setDeletedArticle] = useState(false);
   const navigate = useNavigate();
@@ -66,7 +64,7 @@ const ArticleById = () => {
           {articleId.created_at.slice(0, 10)}
         </Card.Text>
         <Card.Text className="body-id m-3">{articleId.body}</Card.Text>
-        {username === articleId.author ? (
+        {user && user.username === articleId.author ? (
           <Button
             onClick={handleDelete}
             variant="danger"
@@ -83,7 +81,7 @@ const ArticleById = () => {
         />
       </Card.Body>
 
-      <Comments article_id={article_id} />
+      <Comments article_id={article_id} user={user} />
     </section>
   );
 };

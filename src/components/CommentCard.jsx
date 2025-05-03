@@ -1,13 +1,9 @@
 import { Card, CardBody, Container, Button } from "react-bootstrap";
 import { deleteComment, updateCommentById } from "../api";
-import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 import VoteHandler from "./VoteHandler";
 
-const CommentCard = ({ comment, setDeletedComment }) => {
-  const {
-    user: { username },
-  } = useContext(UserContext);
+const CommentCard = ({ comment, setDeletedComment, user }) => {
   const commentId = comment.comment_id;
 
   const handleDelete = () => {
@@ -15,7 +11,6 @@ const CommentCard = ({ comment, setDeletedComment }) => {
       deleteComment(commentId).then(() => {
         setDeletedComment(true);
       });
-      setDeletedComment(false);
     }
   };
 
@@ -35,7 +30,7 @@ const CommentCard = ({ comment, setDeletedComment }) => {
               votingFn={updateCommentById}
               variant="comment"
             />
-            {username === comment.author ? (
+            {user && user.username === comment.author ? (
               <Button
                 onClick={handleDelete}
                 variant="danger"
