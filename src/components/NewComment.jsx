@@ -1,15 +1,12 @@
 import { Form, InputGroup, Button, Row, Col, Container } from "react-bootstrap";
-import { useState, useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { useState } from "react";
 import { postComment } from "../api";
 
-const NewComment = ({ article_id, handleCommentPosted }) => {
+const NewComment = ({ article_id, handleCommentPosted, user }) => {
   const [newComment, setNewComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const {
-    user: { username },
-  } = useContext(UserContext);
+  const username = user.username;
 
   const handleChange = (e) => {
     setNewComment(e.target.value);

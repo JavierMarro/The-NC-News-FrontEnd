@@ -8,7 +8,9 @@ const ArticleCard = ({ article }) => {
         <Card.Img
           className="article-img"
           variant="top"
+          alt="Article's image"
           src={article.article_img_url}
+          loading="lazy"
         />
         <Card.Body>
           <Card.Title>

@@ -91,9 +91,9 @@ const Home = () => {
         </Col>
       </Row>
       <Row xs={1} sm={2} md={3} lg={3} className="g-4">
-        {articles.map((article, index) => {
+        {articles.map((article) => {
           return (
-            <Col key={index}>
+            <Col key={article.article_id}>
               <ArticleCard article={article} />
             </Col>
           );

@@ -19,36 +19,34 @@ const NavMenu = () => {
 
   return (
     <Navbar
-      className="p-1 mb-2 bg-secondary text-white"
+      className="p-1 mb-2"
       expand={"xl"}
       sticky="top"
       style={{ height: "auto" }}
     >
       <Container>
-        <Navbar.Brand as={Link} to="/home" className="nav-font">
+        <Navbar.Brand as={Link} to="/home" className="nav-font mr-5">
           <strong className="nav-font">The NC News</strong>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="me-auto">
-          <Nav className="me-auto nav-style">
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="nav-style">
             <NavDropdown
               title="Topics"
               id="basic-nav-dropdown"
-              className="nav-font mb-0 flex-grow-1"
+              className="nav-font flex-grow-1"
             >
-              <Container className="comment-emoji">
-                <NavDropdown.Item as={Link} to="/home/coding">
-                  Coding
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/home/cooking">
-                  Cooking
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/home/football">
-                  Football
-                </NavDropdown.Item>
-              </Container>
+              <NavDropdown.Item as={Link} to="/home/coding">
+                Coding
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/home/cooking">
+                Cooking
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/home/football">
+                Football
+              </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/users" className="nav-font flex-grow-1">
               Users
