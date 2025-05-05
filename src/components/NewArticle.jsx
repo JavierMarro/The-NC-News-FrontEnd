@@ -180,8 +180,13 @@ const NewArticle = () => {
           ) : (
             <div className="text-center p-4">
               <p>You need to be logged in to create a new article.</p>
-              <Button as={Link} to="/login" variant="dark">
-                Login
+              <Button
+                as={Link}
+                to="/login"
+                variant="dark"
+                className="btn-login-alt"
+              >
+                Login here
               </Button>
             </div>
           )}

@@ -33,8 +33,8 @@ const App = () => {
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login />}></Route>
         </Routes>
-        <Footer />
       </Container>
+      <Footer />
     </>
   );
 };

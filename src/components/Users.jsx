@@ -51,7 +51,7 @@ const Users = () => {
 
   return (
     <Container>
-      <h2 className="my-4">Users:</h2>
+      <h2 className="my-4">List of users:</h2>
       <Row xs={1} sm={2} md={3} lg={3} xl={6} className="row-style">
         {userDetails.map((user) => (
           <Col key={user.username}>

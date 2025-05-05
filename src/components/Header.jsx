@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../assets/TNC-logo.png";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import MoonIcon from "./MoonIcon";
@@ -23,6 +22,7 @@ const Header = ({ isDarkMode, toggleTheme }) => {
           className="header-logo mb-2 mt-2"
           src={logo}
           alt="The NC News Logo"
+          loading="eager"
         />
       </Link>
       <div className="d-flex ml-auto align-items-center">

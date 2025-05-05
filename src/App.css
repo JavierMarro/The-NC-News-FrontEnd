@@ -138,6 +138,24 @@ h2 {
   font-size: medium;
 }
 
+.article-card {
+  height: 420px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+}
+
+.article-img {
+  height: 180px; /* Adjust as needed */
+  object-fit: cover;
+}
+
+.article-card .card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .body-id {
   font-size: 20px;
   text-align: left;
@@ -197,6 +215,12 @@ h2 {
   font-size: 1.25rem;
   display: flexbox;
 }
+/* Down below to give a custom colour to Login button in new article in dark mode*/
+[data-bs-theme="dark"] .btn-login-alt {
+  background-color: #89c0fa !important;
+  color: #111 !important;
+  border: none !important;
+}
 
 .navbar,
 .navbar * {
@@ -231,7 +255,6 @@ h2 {
   .navbar-collapse {
     overflow-x: hidden;
   }
-
   .nav-dropdown {
     max-width: 100%;
     white-space: nowrap;
@@ -239,6 +262,19 @@ h2 {
   .nav-dropdown-menu {
     min-width: 100%;
     overflow-x: hidden;
+  }
+}
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    align-items: flex-start !important;
+  }
+  .navbar-nav {
+    width: 100%;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  .nav-style {
+    justify-content: flex-start !important;
   }
 }
 
@@ -264,7 +300,18 @@ h2 {
 }
 
 .footer {
+  color: #111 !important;
+  background-color: #c7c1bd !important;
   text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  bottom: 0;
 }
 
 #canvas {
