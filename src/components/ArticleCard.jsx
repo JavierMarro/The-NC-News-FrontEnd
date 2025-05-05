@@ -1,16 +1,16 @@
+import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = React.memo(({ article }) => {
   return (
     <section>
-      <Card className="mb-3" border="dark">
+      <Card className="mb-3 article-card" border="dark">
         <Card.Img
           className="article-img"
           variant="top"
           alt="Article's image"
           src={article.article_img_url}
-          loading="lazy"
         />
         <Card.Body>
           <Card.Title>
@@ -36,6 +36,6 @@ const ArticleCard = ({ article }) => {
       </Card>
     </section>
   );
-};
+});
 
 export default ArticleCard;
